@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server
+  labels:
+    app: server
+spec:
+  replicas: 1  # 如果需要更多的副本，可以调整该值
+  selector:
+    matchLabels:
+      app: server
+  template:
+    metadata:
+      labels:
+        app: server
+    spec:
+      containers:
+        - name: server
+          image: victorr1/tag:v3 # 用你的后端镜像名替换<your-backend-image>和<tag>
+          ports:
+            - containerPort: 8888
